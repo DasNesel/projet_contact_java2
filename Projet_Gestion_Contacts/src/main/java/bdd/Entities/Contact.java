@@ -1,6 +1,5 @@
 package bdd.Entities;
 
-import java.security.PrivateKey;
 import java.util.Date;
 
 public class Contact {
