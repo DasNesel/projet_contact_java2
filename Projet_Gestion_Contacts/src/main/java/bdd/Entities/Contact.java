@@ -1,32 +1,49 @@
 package bdd.Entities;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Contact {
 
     private Integer id;
-    private String name;
-    private String surname;
+    private String firstname;
+    private String lastname;
     private String nickname;
     private String phoneFix;
     private String phoneMobil;
-    private String fax;
-    private Date birthday;
+    //private String fax;
+    private LocalDate birthday;
     private String mail;
-    private String society;
-    private String city;
-    private String postCode;
-    private String country;
-    private String region;
+    //private String society;
+    //private String city;
+    //private String postCode;
+    //private String country;
+    //private String region;
     private String website;
-    private String streetName;
-    private Integer streetNumber;
-    private String gender;
-    private String streetType;
+    private String adress;
+    //private String streetName;
+    //private Integer streetNumber;
+    //private String gender;
+    //private String streetType;
 
     //CONSTRUCTOR
 
-    public Contact(Integer id, String name, String surname, String nickname, String phoneFix, String phoneMobil, String fax, Date birthday, String mail, String society, String city, String postCode, String country, String region, String website, String streetName, Integer streetNumber, String gender, String streetType) {
+    public Contact(Integer id, String firstname, String lastname, String nickname, String phoneFix, String phoneMobil, LocalDate birthday, String mail, String website, String adress) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.nickname = nickname;
+        this.phoneFix = phoneFix;
+        this.phoneMobil = phoneMobil;
+        this.birthday = birthday;
+        this.mail = mail;
+        this.website = website;
+        this.adress = adress;
+    }
+
+
+
+    /*public Contact(Integer id, String name, String surname, String nickname, String phoneFix, String phoneMobil, String fax, Date birthday, String mail, String society, String city, String postCode, String country, String region, String website, String streetName, Integer streetNumber, String gender, String streetType) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -46,21 +63,21 @@ public class Contact {
         this.streetNumber = streetNumber;
         this.gender = gender;
         this.streetType = streetType;
-    }
+    }*/
 
 
     //GETTERS
-
-    public String getName() {
-        return name;
-    }
 
     public Integer getId() {
         return id;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
     }
 
     public String getNickname() {
@@ -75,11 +92,7 @@ public class Contact {
         return phoneMobil;
     }
 
-    public String getFax() {
-        return fax;
-    }
-
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
@@ -87,45 +100,14 @@ public class Contact {
         return mail;
     }
 
-    public String getSociety() {
-        return society;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getPostCode() {
-        return postCode;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
     public String getWebsite() {
         return website;
     }
 
-    public String getStreetName() {
-        return streetName;
+    public String getAdress() {
+        return adress;
     }
 
-    public Integer getStreetNumber() {
-        return streetNumber;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public String getStreetType() {
-        return streetType;
-    }
 
     //SETTERS
 
@@ -134,12 +116,12 @@ public class Contact {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public void setNickname(String nickname) {
@@ -154,11 +136,7 @@ public class Contact {
         this.phoneMobil = phoneMobil;
     }
 
-    public void setFax(String fax) {
-        this.fax = fax;
-    }
-
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
@@ -166,43 +144,11 @@ public class Contact {
         this.mail = mail;
     }
 
-    public void setSociety(String society) {
-        this.society = society;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
     public void setWebsite(String website) {
         this.website = website;
     }
 
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
-    }
-
-    public void setStreetNumber(Integer streetNumber) {
-        this.streetNumber = streetNumber;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public void setStreetType(String streetType) {
-        this.streetType = streetType;
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 }
