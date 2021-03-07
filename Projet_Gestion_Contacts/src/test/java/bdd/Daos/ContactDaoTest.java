@@ -116,4 +116,23 @@ public class ContactDaoTest {
                 tuple(2, "LICETTE","Camille","caca", null,"0655772137","Rue des lilas,59000 LILLE","camille.licette@hei.yncrea.fr", null, LocalDate.of(1998, 10, 16))
         );
     }
+
+    @Test
+    public void shouldDeleteContact() throws Exception {
+        // WHEN
+        Contact contact = new Contact(1, "SNOW", "John", "le batard", "0105112233", null, LocalDate.of(1852, 10, 3), null, null,"Winterfell appartement 240, Westeros");
+        contactDao.deleteContact(contact);
+
+        // THEN
+        Connection connection = DataSourceFactory.getDataSource().getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet resultSetFilm = statement.executeQuery("SELECT * FROM contact WHERE id=1");
+
+
+        assertThat(resultSetFilm.next()).isFalse();
+
+        resultSetFilm.close();
+        statement.close();
+        connection.close();
+    }
 }

@@ -185,4 +185,22 @@ public class ContactDao {
         return list;
     }
 
+    public void deleteContact(Contact contact) {
+        /*
+         * Function that permit to add a contact to the database
+         */
+        DataSource db = DataSourceFactory.getDataSource();
+        try(Connection connection = db.getConnection()) { // connection to the database
+            String sqlQuery = "DELETE FROM contact WHERE id = ? "; // requete SQL
+            try(PreparedStatement statement = connection.prepareStatement(sqlQuery)){
+                statement.setInt(1, contact.getId());
+                statement.executeUpdate();
+                statement.close();
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
