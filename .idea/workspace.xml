@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d3795601-c0c9-4b18-978b-6fc945524ebd" name="Default Changelist" comment="" />
+    <list default="true" id="d3795601-c0c9-4b18-978b-6fc945524ebd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Projet_Gestion_Contacts/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projet_Gestion_Contacts/sqlite.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projet_Gestion_Contacts/src/test/java/bdd/Daos/ContactDaoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projet_Gestion_Contacts/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Projet_Gestion_Contacts/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projet_Gestion_Contacts/src/main/java/bdd/Daos/ContactDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Projet_Gestion_Contacts/src/main/java/bdd/Daos/ContactDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projet_Gestion_Contacts/target/classes/bdd/Daos/ContactDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/Projet_Gestion_Contacts/target/classes/bdd/Daos/ContactDao.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +38,7 @@
       <option name="presentableId" value="Default" />
       <updated>1614807202803</updated>
       <workItem from="1614807205437" duration="95000" />
+      <workItem from="1615115848527" duration="15000" />
     </task>
     <servers />
   </component>
