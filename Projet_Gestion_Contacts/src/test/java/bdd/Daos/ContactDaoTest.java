@@ -135,4 +135,15 @@ public class ContactDaoTest {
         statement.close();
         connection.close();
     }
+
+    @Test
+    public void shouldGetContactsByPhoneNumber() {
+        // WHEN
+        List<Contact> contacts = contactDao.getContactsByPhoneNumber("0655772137");
+        // THEN
+        assertThat(contacts).hasSize(1);
+        assertThat(contacts).extracting("id", "lastname", "firstname", "nickname", "phoneFix", "phoneMobil", "adress", "mail", "website", "birthday").containsOnly(
+                tuple(2, "LICETTE","Camille","caca", null,"0655772137","Rue des lilas,59000 LILLE","camille.licette@hei.yncrea.fr", null, LocalDate.of(1998, 10, 16))
+        );
+    }
 }
