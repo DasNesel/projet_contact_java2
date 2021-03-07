@@ -146,4 +146,34 @@ public class ContactDaoTest {
                 tuple(2, "LICETTE","Camille","caca", null,"0655772137","Rue des lilas,59000 LILLE","camille.licette@hei.yncrea.fr", null, LocalDate.of(1998, 10, 16))
         );
     }
+
+    @Test
+    public void shouldUpdateContact() throws Exception {
+        // WHEN
+        Contact contact = new Contact(1, "SNOW", "John", "le batard", "0105112233", null, LocalDate.of(1852, 10, 3), null, null,"Winterfell appartement 240, Westeros");
+        contactDao.updateContact(contact);
+
+        // THEN
+        Connection connection = DataSourceFactory.getDataSource().getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet resultSetFilm = statement.executeQuery("SELECT * FROM contact WHERE firstname='SNOW'");
+
+
+        assertThat(resultSetFilm.next()).isTrue();
+        assertThat(resultSetFilm.getInt("id")).isNotNull();
+        assertThat(resultSetFilm.getString("firstname")).isEqualTo("SNOW");
+        assertThat(resultSetFilm.getString("lastname")).isEqualTo("John");
+        assertThat(resultSetFilm.getString("nickname")).isEqualTo("le batard");
+        assertThat(resultSetFilm.getString("phone_number_fix")).isEqualTo("0105112233");
+        assertThat(resultSetFilm.getString("address")).isEqualTo("Winterfell appartement 240, Westeros");
+        assertThat(resultSetFilm.getString("phone_number_mobil")).isNull();
+        assertThat(resultSetFilm.getString("email_address")).isNull();
+        assertThat(resultSetFilm.getString("website_address")).isNull();
+        assertThat(resultSetFilm.getDate("birth_date")).isEqualTo(java.sql.Date.valueOf((LocalDate.of(1852, 10, 3))));
+        assertThat(resultSetFilm.next()).isFalse();
+
+        resultSetFilm.close();
+        statement.close();
+        connection.close();
+    }
 }
