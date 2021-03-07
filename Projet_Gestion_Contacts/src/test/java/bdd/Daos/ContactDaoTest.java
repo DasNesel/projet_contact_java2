@@ -56,19 +56,19 @@ public class ContactDaoTest {
     @Test
     public void shouldAddContact() throws Exception {
         // WHEN
-        Contact contact = new Contact(null, "SNOW", "John", "le batard", "0105112233", null, LocalDate.of(1852, 10, 3), null, null,"Winterfell appartement 240, Westeros");
+        Contact contact = new Contact(null, "John", "snow", "le batard", "0105112233", null, LocalDate.of(1852, 10, 3), null, null,"Winterfell appartement 240, Westeros");
         contactDao.addContact(contact);
 
         // THEN
         Connection connection = DataSourceFactory.getDataSource().getConnection();
         Statement statement = connection.createStatement();
-        ResultSet resultSetFilm = statement.executeQuery("SELECT * FROM contact WHERE firstname='SNOW'");
+        ResultSet resultSetFilm = statement.executeQuery("SELECT * FROM contact WHERE lastname='SNOW'");
 
 
         assertThat(resultSetFilm.next()).isTrue();
         assertThat(resultSetFilm.getInt("id")).isNotNull();
-        assertThat(resultSetFilm.getString("firstname")).isEqualTo("SNOW");
-        assertThat(resultSetFilm.getString("lastname")).isEqualTo("John");
+        assertThat(resultSetFilm.getString("firstname")).isEqualTo("John");
+        assertThat(resultSetFilm.getString("lastname")).isEqualTo("SNOW");
         assertThat(resultSetFilm.getString("nickname")).isEqualTo("le batard");
         assertThat(resultSetFilm.getString("phone_number_fix")).isEqualTo("0105112233");
         assertThat(resultSetFilm.getString("address")).isEqualTo("Winterfell appartement 240, Westeros");
@@ -150,19 +150,19 @@ public class ContactDaoTest {
     @Test
     public void shouldUpdateContact() throws Exception {
         // WHEN
-        Contact contact = new Contact(1, "SNOW", "John", "le batard", "0105112233", null, LocalDate.of(1852, 10, 3), null, null,"Winterfell appartement 240, Westeros");
+        Contact contact = new Contact(1, "John", "snow", "le batard", "0105112233", null, LocalDate.of(1852, 10, 3), null, null,"Winterfell appartement 240, Westeros");
         contactDao.updateContact(contact);
 
         // THEN
         Connection connection = DataSourceFactory.getDataSource().getConnection();
         Statement statement = connection.createStatement();
-        ResultSet resultSetFilm = statement.executeQuery("SELECT * FROM contact WHERE firstname='SNOW'");
+        ResultSet resultSetFilm = statement.executeQuery("SELECT * FROM contact WHERE lastname='SNOW'");
 
 
         assertThat(resultSetFilm.next()).isTrue();
         assertThat(resultSetFilm.getInt("id")).isNotNull();
-        assertThat(resultSetFilm.getString("firstname")).isEqualTo("SNOW");
-        assertThat(resultSetFilm.getString("lastname")).isEqualTo("John");
+        assertThat(resultSetFilm.getString("firstname")).isEqualTo("John");
+        assertThat(resultSetFilm.getString("lastname")).isEqualTo("SNOW");
         assertThat(resultSetFilm.getString("nickname")).isEqualTo("le batard");
         assertThat(resultSetFilm.getString("phone_number_fix")).isEqualTo("0105112233");
         assertThat(resultSetFilm.getString("address")).isEqualTo("Winterfell appartement 240, Westeros");

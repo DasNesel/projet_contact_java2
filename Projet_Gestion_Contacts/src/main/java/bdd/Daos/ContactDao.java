@@ -7,6 +7,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class ContactDao {
 
@@ -55,7 +56,7 @@ public class ContactDao {
             String sqlQuery = "INSERT INTO contact(lastname,firstname,nickname,phone_number_fix,phone_number_mobil,address,email_address,website_address,birth_date) " +
                     "VALUES(?,?,?,?,?,?,?,?,?)";
             try (PreparedStatement statement = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)) {
-                statement.setString(1, contact.getLastname());
+                statement.setString(1, contact.getLastname().toUpperCase(Locale.ROOT));
                 statement.setString(2, contact.getFirstname());
                 statement.setString(3, contact.getNickname());
                 statement.setString(4, contact.getPhoneFix());
@@ -249,7 +250,7 @@ public class ContactDao {
         try (Connection connection = db.getConnection()) {
             String sqlQuery = "UPDATE contact SET lastname = ?,firstname = ?,nickname = ?,phone_number_fix = ?,phone_number_mobil = ?,address = ?,email_address = ?,website_address = ?,birth_date = ? WHERE id = ?";
             try (PreparedStatement statement = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)) {
-                statement.setString(1, contact.getLastname());
+                statement.setString(1, contact.getLastname().toUpperCase());
                 statement.setString(2, contact.getFirstname());
                 statement.setString(3, contact.getNickname());
                 statement.setString(4, contact.getPhoneFix());
