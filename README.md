@@ -16,5 +16,5 @@ L'interface graphique est réalisé avec JavaFX.
 
 Pour l'interface entre le programme et la base de données, nous avons utilisés SQLite comme demandé dans l'énoncé. Nous avons aussi pu réalisé différent tests unitaires pour chaque fonctions de la DAO. Ils sont tous validée comme on peut le voir sur la photo ci dessous. 
 
-![image-20210307185433607](C:\Users\Matthieu\AppData\Roaming\Typora\typora-user-images\image-20210307185433607.png)
+![image-20210307185433607](.\img\image-20210307185433607.png)
 
