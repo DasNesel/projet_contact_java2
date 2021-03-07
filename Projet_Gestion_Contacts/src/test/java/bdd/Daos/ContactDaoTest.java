@@ -82,4 +82,16 @@ public class ContactDaoTest {
         statement.close();
         connection.close();
     }
+
+    @Test
+    public void shouldGetContactsByLastname() {
+        // WHEN
+        List<Contact> contacts = contactDao.getContactsByLastname("Licette");
+        // THEN
+        assertThat(contacts).hasSize(2);
+        assertThat(contacts).extracting("id", "lastname", "firstname", "nickname", "phoneFix", "phoneMobil", "adress", "mail", "website", "birthday").containsOnly(
+                tuple(1, "LICETTE","Matthieu","Math", null,"0602053033","Rue des lilas,59000 LILLE","matthieu.licette@junia.com", null, LocalDate.of(1996, 8, 6)),
+                tuple(2, "LICETTE","Camille","caca", null,"0655772137","Rue des lilas,59000 LILLE","camille.licette@hei.yncrea.fr", null, LocalDate.of(1998, 10, 16))
+        );
+    }
 }
