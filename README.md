@@ -12,6 +12,9 @@ L'interface graphique est réalisée avec JavaFX.
 
 ## Base de données
 
+Voici un schéma sur la base de données : 
+![](img\contact_photo.png)
+
 ### DAO
 
 Pour l'interface entre le programme et la base de données, nous avons utilisé SQLite comme demandé dans l'énoncé. Nous avons aussi pu réaliser différents tests unitaires pour chaque fonctions de la DAO. Ils sont tous validés comme on peut le voir sur la photo ci-dessous. 
@@ -32,3 +35,9 @@ Malgré nos recherches sur différents forum, aucune solution ne fonctionne. voi
 - https://stackoverflow.com/questions/61752020/failed-to-execute-goal-org-openjfxjavafx-maven-plugin0-0-1run-default-cli-a
 - https://github.com/openjfx/samples/issues/28
 
+ ## Problèmes rencontrés 
+ 
+ La liste des contacts, bien que mise en place, rencontre quelques problèmes d'affichage.
+ 
+ On ne peut pas récupérer ou générer les différentes données des contacts (sous format VCard), cependant, les fonctions qui les traitent sont au point et opérationnelles.
+ 
