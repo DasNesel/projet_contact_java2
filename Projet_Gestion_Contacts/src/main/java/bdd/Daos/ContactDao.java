@@ -33,7 +33,9 @@ public class ContactDao {
                         String mail = resultSet.getString("email_address");
                         String address = resultSet.getString("address");
                         String website = resultSet.getString("website_address");
-                        Contact contact = new Contact(id, firstname, lastname, nickname, phoneFix, phoneMobil, birth, mail, website, address);
+                        String city = resultSet.getString("city");
+                        String country = resultSet.getString("country");
+                        Contact contact = new Contact(id, firstname, lastname, nickname, phoneFix, phoneMobil, birth, mail, website, address, city, country);
                         list.add(contact);
                     }
                     resultSet.close();
@@ -53,8 +55,8 @@ public class ContactDao {
          */
         DataSource db = DataSourceFactory.getDataSource();
         try (Connection connection = db.getConnection()) {
-            String sqlQuery = "INSERT INTO contact(lastname,firstname,nickname,phone_number_fix,phone_number_mobil,address,email_address,website_address,birth_date) " +
-                    "VALUES(?,?,?,?,?,?,?,?,?)";
+            String sqlQuery = "INSERT INTO contact(lastname,firstname,nickname,phone_number_fix,phone_number_mobil,address,city,country,email_address,website_address,birth_date) " +
+                    "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
             try (PreparedStatement statement = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)) {
                 statement.setString(1, contact.getLastname().toUpperCase(Locale.ROOT));
                 statement.setString(2, contact.getFirstname());
@@ -62,9 +64,11 @@ public class ContactDao {
                 statement.setString(4, contact.getPhoneFix());
                 statement.setString(5, contact.getPhoneMobil());
                 statement.setString(6, contact.getAdress());
-                statement.setString(7, contact.getMail());
-                statement.setString(8, contact.getWebsite());
-                statement.setDate(9, java.sql.Date.valueOf(contact.getBirthday()));
+                statement.setString(7, contact.getCity());
+                statement.setString(8, contact.getCountry());
+                statement.setString(9, contact.getMail());
+                statement.setString(10, contact.getWebsite());
+                statement.setDate(11, java.sql.Date.valueOf(contact.getBirthday()));
 
                 statement.executeUpdate();
                 statement.close();
@@ -98,7 +102,9 @@ public class ContactDao {
                         String mail = resultSet.getString("email_address");
                         String address = resultSet.getString("address");
                         String website = resultSet.getString("website_address");
-                        Contact contact = new Contact(id, firstname, lastname, nickname, phoneFix, phoneMobil, birth, mail, website, address);
+                        String city = resultSet.getString("city");
+                        String country = resultSet.getString("country");
+                        Contact contact = new Contact(id, firstname, lastname, nickname, phoneFix, phoneMobil, birth, mail, website, address, city, country);
                         list.add(contact);
                     }
                     resultSet.close();
@@ -135,7 +141,9 @@ public class ContactDao {
                         String mail = resultSet.getString("email_address");
                         String address = resultSet.getString("address");
                         String website = resultSet.getString("website_address");
-                        Contact contact = new Contact(id, firstname, lastname, nickname, phoneFix, phoneMobil, birth, mail, website, address);
+                        String city = resultSet.getString("city");
+                        String country = resultSet.getString("country");
+                        Contact contact = new Contact(id, firstname, lastname, nickname, phoneFix, phoneMobil, birth, mail, website, address, city, country);
                         list.add(contact);
                     }
                     resultSet.close();
@@ -172,7 +180,9 @@ public class ContactDao {
                         String mail = resultSet.getString("email_address");
                         String address = resultSet.getString("address");
                         String website = resultSet.getString("website_address");
-                        Contact contact = new Contact(id, firstname, lastname, nickname, phoneFix, phoneMobil, birth, mail, website, address);
+                        String city = resultSet.getString("city");
+                        String country = resultSet.getString("country");
+                        Contact contact = new Contact(id, firstname, lastname, nickname, phoneFix, phoneMobil, birth, mail, website, address, city, country);
                         list.add(contact);
                     }
                     resultSet.close();
@@ -228,7 +238,9 @@ public class ContactDao {
                         String mail = resultSet.getString("email_address");
                         String address = resultSet.getString("address");
                         String website = resultSet.getString("website_address");
-                        Contact contact = new Contact(id, firstname, lastname, nickname, phoneFix, phoneMobil, birth, mail, website, address);
+                        String city = resultSet.getString("city");
+                        String country = resultSet.getString("country");
+                        Contact contact = new Contact(id, firstname, lastname, nickname, phoneFix, phoneMobil, birth, mail, website, address, city, country);
                         list.add(contact);
                     }
                     resultSet.close();
@@ -248,7 +260,7 @@ public class ContactDao {
          */
         DataSource db = DataSourceFactory.getDataSource();
         try (Connection connection = db.getConnection()) {
-            String sqlQuery = "UPDATE contact SET lastname = ?,firstname = ?,nickname = ?,phone_number_fix = ?,phone_number_mobil = ?,address = ?,email_address = ?,website_address = ?,birth_date = ? WHERE id = ?";
+            String sqlQuery = "UPDATE contact SET lastname = ?,firstname = ?,nickname = ?,phone_number_fix = ?,phone_number_mobil = ?,address = ?, city = ?, country = ?,email_address = ?,website_address = ?,birth_date = ? WHERE id = ?";
             try (PreparedStatement statement = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)) {
                 statement.setString(1, contact.getLastname().toUpperCase());
                 statement.setString(2, contact.getFirstname());
@@ -256,10 +268,12 @@ public class ContactDao {
                 statement.setString(4, contact.getPhoneFix());
                 statement.setString(5, contact.getPhoneMobil());
                 statement.setString(6, contact.getAdress());
-                statement.setString(7, contact.getMail());
-                statement.setString(8, contact.getWebsite());
-                statement.setDate(9, java.sql.Date.valueOf(contact.getBirthday()));
-                statement.setInt(10, contact.getId());
+                statement.setString(7, contact.getCity());
+                statement.setString(8, contact.getCountry());
+                statement.setString(9, contact.getMail());
+                statement.setString(10, contact.getWebsite());
+                statement.setDate(11, java.sql.Date.valueOf(contact.getBirthday()));
+                statement.setInt(12, contact.getId());
 
                 statement.executeUpdate();
                 statement.close();

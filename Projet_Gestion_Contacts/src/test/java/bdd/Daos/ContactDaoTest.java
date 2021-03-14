@@ -31,12 +31,14 @@ public class ContactDaoTest {
                         "    phone_number_fix VARCHAR(15) NULL,\n" +
                         "    phone_number_mobil VARCHAR(15) NULL,\n" +
                         "    address VARCHAR(200) NULL,\n" +
+                        "    city VARCHAR(200) NULL,\n" +
+                        "    country VARCHAR(200) NULL,\n" +
                         "    email_address VARCHAR(150) NULL,\n" +
                         "    website_address VARCHAR(200) NULL,\n" +
                         "    birth_date DATE NULL);");
         stmt.executeUpdate("DELETE FROM contact");
-        stmt.executeUpdate("INSERT INTO contact(id,lastname,firstname,nickname,phone_number_fix,phone_number_mobil,address,email_address,website_address,birth_date) VALUES (1,'LICETTE', 'Matthieu', 'Math', null,'0602053033','Rue des lilas,59000 LILLE','matthieu.licette@junia.com', null, '1996-08-06 12:00:00.000')");
-        stmt.executeUpdate("INSERT INTO contact(id,lastname,firstname,nickname,phone_number_fix,phone_number_mobil,address,email_address,website_address,birth_date) VALUES (2,'LICETTE', 'Camille', 'caca', null,'0655772137','Rue des lilas,59000 LILLE','camille.licette@hei.yncrea.fr', null, '1998-10-16 12:00:00.000')");
+        stmt.executeUpdate("INSERT INTO contact(id,lastname,firstname,nickname,phone_number_fix,phone_number_mobil,address,city, country,email_address, website_address,birth_date) VALUES (1,'LICETTE', 'Matthieu', 'Math', null,'0602053033','Rue des lilas', 'LILLE', 'France','matthieu.licette@junia.com', null, '1996-08-06 12:00:00.000')");
+        stmt.executeUpdate("INSERT INTO contact(id,lastname,firstname,nickname,phone_number_fix,phone_number_mobil,address,city, country,email_address, website_address,birth_date) VALUES (2,'LICETTE', 'Camille', 'caca', null,'0655772137','Rue des lilas', 'LILLE', 'France','camille.licette@hei.yncrea.fr', null, '1998-10-16 12:00:00.000')");
         stmt.close();
         connection.close();
     }
@@ -47,16 +49,16 @@ public class ContactDaoTest {
         List<Contact> contacts = contactDao.listContacts();
         // THEN
         assertThat(contacts).hasSize(2);
-        assertThat(contacts).extracting("id", "lastname", "firstname", "nickname", "phoneFix", "phoneMobil", "adress", "mail", "website", "birthday").containsOnly(
-                tuple(1, "LICETTE","Matthieu","Math", null,"0602053033","Rue des lilas,59000 LILLE","matthieu.licette@junia.com", null, LocalDate.of(1996, 8, 6)),
-                tuple(2, "LICETTE","Camille","caca", null,"0655772137","Rue des lilas,59000 LILLE","camille.licette@hei.yncrea.fr", null, LocalDate.of(1998, 10, 16))
+        assertThat(contacts).extracting("id", "lastname", "firstname", "nickname", "phoneFix", "phoneMobil", "adress", "city", "country", "mail", "website", "birthday").containsOnly(
+                tuple(1, "LICETTE","Matthieu","Math", null,"0602053033","Rue des lilas","LILLE","France","matthieu.licette@junia.com", null, LocalDate.of(1996, 8, 6)),
+                tuple(2, "LICETTE","Camille","caca", null,"0655772137","Rue des lilas","LILLE","France","camille.licette@hei.yncrea.fr", null, LocalDate.of(1998, 10, 16))
         );
     }
 
     @Test
     public void shouldAddContact() throws Exception {
         // WHEN
-        Contact contact = new Contact(null, "John", "snow", "le batard", "0105112233", null, LocalDate.of(1852, 10, 3), null, null,"Winterfell appartement 240, Westeros");
+        Contact contact = new Contact(null, "John", "snow", "le batard", "0105112233", null, LocalDate.of(1852, 10, 3), null, null,"Chateau appartement 240", "Winterfell", "Westeros");
         contactDao.addContact(contact);
 
         // THEN
@@ -71,7 +73,9 @@ public class ContactDaoTest {
         assertThat(resultSetFilm.getString("lastname")).isEqualTo("SNOW");
         assertThat(resultSetFilm.getString("nickname")).isEqualTo("le batard");
         assertThat(resultSetFilm.getString("phone_number_fix")).isEqualTo("0105112233");
-        assertThat(resultSetFilm.getString("address")).isEqualTo("Winterfell appartement 240, Westeros");
+        assertThat(resultSetFilm.getString("address")).isEqualTo("Chateau appartement 240");
+        assertThat(resultSetFilm.getString("city")).isEqualTo("Winterfell");
+        assertThat(resultSetFilm.getString("country")).isEqualTo("Westeros");
         assertThat(resultSetFilm.getString("phone_number_mobil")).isNull();
         assertThat(resultSetFilm.getString("email_address")).isNull();
         assertThat(resultSetFilm.getString("website_address")).isNull();
@@ -89,9 +93,9 @@ public class ContactDaoTest {
         List<Contact> contacts = contactDao.getContactsByLastname("Licette");
         // THEN
         assertThat(contacts).hasSize(2);
-        assertThat(contacts).extracting("id", "lastname", "firstname", "nickname", "phoneFix", "phoneMobil", "adress", "mail", "website", "birthday").containsOnly(
-                tuple(1, "LICETTE","Matthieu","Math", null,"0602053033","Rue des lilas,59000 LILLE","matthieu.licette@junia.com", null, LocalDate.of(1996, 8, 6)),
-                tuple(2, "LICETTE","Camille","caca", null,"0655772137","Rue des lilas,59000 LILLE","camille.licette@hei.yncrea.fr", null, LocalDate.of(1998, 10, 16))
+        assertThat(contacts).extracting("id", "lastname", "firstname", "nickname", "phoneFix", "phoneMobil", "adress", "city", "country", "mail", "website", "birthday").containsOnly(
+                tuple(1, "LICETTE","Matthieu","Math", null,"0602053033","Rue des lilas","LILLE","France","matthieu.licette@junia.com", null, LocalDate.of(1996, 8, 6)),
+                tuple(2, "LICETTE","Camille","caca", null,"0655772137","Rue des lilas","LILLE","France","camille.licette@hei.yncrea.fr", null, LocalDate.of(1998, 10, 16))
         );
     }
 
@@ -101,8 +105,8 @@ public class ContactDaoTest {
         List<Contact> contacts = contactDao.getContactsByFirstname("Matthieu");
         // THEN
         assertThat(contacts).hasSize(1);
-        assertThat(contacts).extracting("id", "lastname", "firstname", "nickname", "phoneFix", "phoneMobil", "adress", "mail", "website", "birthday").containsOnly(
-                tuple(1, "LICETTE","Matthieu","Math", null,"0602053033","Rue des lilas,59000 LILLE","matthieu.licette@junia.com", null, LocalDate.of(1996, 8, 6))
+        assertThat(contacts).extracting("id", "lastname", "firstname", "nickname", "phoneFix", "phoneMobil", "adress", "city", "country", "mail", "website", "birthday").containsOnly(
+                tuple(1, "LICETTE","Matthieu","Math", null,"0602053033","Rue des lilas","LILLE","France","matthieu.licette@junia.com", null, LocalDate.of(1996, 8, 6))
         );
     }
 
@@ -112,15 +116,15 @@ public class ContactDaoTest {
         List<Contact> contacts = contactDao.getContactsByNickname("caca");
         // THEN
         assertThat(contacts).hasSize(1);
-        assertThat(contacts).extracting("id", "lastname", "firstname", "nickname", "phoneFix", "phoneMobil", "adress", "mail", "website", "birthday").containsOnly(
-                tuple(2, "LICETTE","Camille","caca", null,"0655772137","Rue des lilas,59000 LILLE","camille.licette@hei.yncrea.fr", null, LocalDate.of(1998, 10, 16))
+        assertThat(contacts).extracting("id", "lastname", "firstname", "nickname", "phoneFix", "phoneMobil", "adress", "city", "country", "mail", "website", "birthday").containsOnly(
+                tuple(2, "LICETTE","Camille","caca", null,"0655772137","Rue des lilas","LILLE","France","camille.licette@hei.yncrea.fr", null, LocalDate.of(1998, 10, 16))
         );
     }
 
     @Test
     public void shouldDeleteContact() throws Exception {
         // WHEN
-        Contact contact = new Contact(1, "SNOW", "John", "le batard", "0105112233", null, LocalDate.of(1852, 10, 3), null, null,"Winterfell appartement 240, Westeros");
+        Contact contact = new Contact(1, "John", "snow", "le batard", "0105112233", null, LocalDate.of(1852, 10, 3), null, null,"Chateau appartement 240", "Winterfell", "Westeros");
         contactDao.deleteContact(contact);
 
         // THEN
@@ -142,15 +146,15 @@ public class ContactDaoTest {
         List<Contact> contacts = contactDao.getContactsByPhoneNumber("0655772137");
         // THEN
         assertThat(contacts).hasSize(1);
-        assertThat(contacts).extracting("id", "lastname", "firstname", "nickname", "phoneFix", "phoneMobil", "adress", "mail", "website", "birthday").containsOnly(
-                tuple(2, "LICETTE","Camille","caca", null,"0655772137","Rue des lilas,59000 LILLE","camille.licette@hei.yncrea.fr", null, LocalDate.of(1998, 10, 16))
+        assertThat(contacts).extracting("id", "lastname", "firstname", "nickname", "phoneFix", "phoneMobil", "adress", "city", "country", "mail", "website", "birthday").containsOnly(
+                tuple(2, "LICETTE","Camille","caca", null,"0655772137","Rue des lilas","LILLE","France","camille.licette@hei.yncrea.fr", null, LocalDate.of(1998, 10, 16))
         );
     }
 
     @Test
     public void shouldUpdateContact() throws Exception {
         // WHEN
-        Contact contact = new Contact(1, "John", "snow", "le batard", "0105112233", null, LocalDate.of(1852, 10, 3), null, null,"Winterfell appartement 240, Westeros");
+        Contact contact = new Contact(1, "John", "snow", "le batard", "0105112233", null, LocalDate.of(1852, 10, 3), null, null,"Chateau appartement 240", "Winterfell", "Westeros");
         contactDao.updateContact(contact);
 
         // THEN
@@ -165,7 +169,9 @@ public class ContactDaoTest {
         assertThat(resultSetFilm.getString("lastname")).isEqualTo("SNOW");
         assertThat(resultSetFilm.getString("nickname")).isEqualTo("le batard");
         assertThat(resultSetFilm.getString("phone_number_fix")).isEqualTo("0105112233");
-        assertThat(resultSetFilm.getString("address")).isEqualTo("Winterfell appartement 240, Westeros");
+        assertThat(resultSetFilm.getString("address")).isEqualTo("Chateau appartement 240");
+        assertThat(resultSetFilm.getString("city")).isEqualTo("Winterfell");
+        assertThat(resultSetFilm.getString("country")).isEqualTo("Westeros");
         assertThat(resultSetFilm.getString("phone_number_mobil")).isNull();
         assertThat(resultSetFilm.getString("email_address")).isNull();
         assertThat(resultSetFilm.getString("website_address")).isNull();
