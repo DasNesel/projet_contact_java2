@@ -22,7 +22,7 @@ public class App extends Application {
 	@Override
 	public void start(Stage stage) throws IOException {
 		// Nothing new here
-		stage.setTitle("The best Quizz in the Universe");
+		stage.setTitle("Le meilleur gestionnaire de contact de l'univers");
 		// Load the main layout from file
 		mainlayout = loadFXML("MainLayout");
 		// Back to normal, except we use our newly defined member. Seems cumbersome, but

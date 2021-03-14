@@ -27,11 +27,11 @@
       <TextField fx:id="adress" layoutX="105.0" layoutY="335.0" prefHeight="26.0" prefWidth="254.0" />
       <TextField fx:id="website" layoutX="105.0" layoutY="297.0" prefHeight="26.0" prefWidth="254.0" />
       <Button layoutX="451.0" layoutY="461.0" mnemonicParsing="false" onAction="#handleSaveButton" text="Enregistrer" />
-      <Button layoutX="547.0" layoutY="461.0" mnemonicParsing="false" onAction="#handleDeleteButton" text="Supprimer" />
-      <DatePicker layoutX="105.0" layoutY="258.0" />
+      <Button layoutX="547.0" layoutY="461.0" mnemonicParsing="false" onAction="#handleCancelButton" text="Annuler" />
+      <DatePicker fx:id="birthDay" layoutX="105.0" layoutY="258.0" />
       <Label layoutX="18.0" layoutY="416.0" text="City" />
       <Label layoutX="16.0" layoutY="453.0" text="Country" />
-      <TextField fx:id="mail1" layoutX="104.0" layoutY="448.0" prefHeight="26.0" prefWidth="254.0" />
-      <TextField fx:id="mail2" layoutX="105.0" layoutY="411.0" prefHeight="26.0" prefWidth="254.0" />
+      <TextField fx:id="city" layoutX="104.0" layoutY="448.0" prefHeight="26.0" prefWidth="254.0" />
+      <TextField fx:id="country" layoutX="105.0" layoutY="411.0" prefHeight="26.0" prefWidth="254.0" />
    </children>
 </AnchorPane>
