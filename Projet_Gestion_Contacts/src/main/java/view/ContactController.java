@@ -1,10 +1,6 @@
-package view;
+package View;
 
-import projet.contact.bdd.Entities.*;
-import projet.contact.bdd.Daos.*;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
