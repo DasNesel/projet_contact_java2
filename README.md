@@ -18,3 +18,17 @@ Pour l'interface entre le programme et la base de données, nous avons utilisé 
 
 ![image-20210307185433607](.\img\image-20210307185433607.png)
 
+
+
+## Intégration 
+
+Nous avons eu un problème lors de l'intégration de la partie graphique avec le reste du code. Nous avons une erreur qui est la suivante :
+
+![Capture d’écran 2021-03-14 204439](img\é.png)
+
+Malgré nos recherches sur différents forum, aucune solution ne fonctionne. voici les liens que nous avons utilisés :
+
+- https://openjfx.io/openjfx-docs/#maven
+- https://stackoverflow.com/questions/61752020/failed-to-execute-goal-org-openjfxjavafx-maven-plugin0-0-1run-default-cli-a
+- https://github.com/openjfx/samples/issues/28
+

@@ -34,7 +34,7 @@ public class App extends Application {
     }
 
 	private static <T> T loadFXML(String fxml) throws IOException {
-		FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/isen/quiz/view/" + fxml + ".fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/View/" + fxml + ".fxml"));
 		return fxmlLoader.load();
 	}
 
