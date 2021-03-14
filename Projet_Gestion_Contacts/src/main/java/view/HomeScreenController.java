@@ -2,7 +2,6 @@ package View;
 
 import java.io.IOException;
 
-import projet.contact.App;
 import javafx.fxml.FXML;
 
 public class HomeScreenController {
