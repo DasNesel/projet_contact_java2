@@ -1,4 +1,4 @@
-package Contact;
+package View;
 
 import java.io.IOException;
 

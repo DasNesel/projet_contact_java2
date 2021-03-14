@@ -1,7 +1,6 @@
 package View;
 import java.io.IOException;
 
-import Contact.App;
 import javafx.application.Platform;
 
 public class MainLayoutController {

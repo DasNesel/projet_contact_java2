@@ -1,0 +1,8 @@
+BEGIN:VCARD
+VERSION:3.0
+N:SNOW;John;;;
+FN:SNOW John
+NICKNAME:le batard
+TEL;TYPE=home:0105112233
+ADR;TYPE=WORK:;;Chateau appartement 240;Winterfell;;;Westeros
+END:VCARD
