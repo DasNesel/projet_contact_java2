@@ -15,12 +15,12 @@ public class Contact {
     private LocalDate birthday;
     private String mail;
     //private String society;
-    //private String city;
     //private String postCode;
-    //private String country;
     //private String region;
     private String website;
     private String adress;
+    private String city;
+    private String country;
     //private String streetName;
     //private Integer streetNumber;
     //private String gender;
@@ -28,7 +28,7 @@ public class Contact {
 
     //CONSTRUCTOR
 
-    public Contact(Integer id, String firstname, String lastname, String nickname, String phoneFix, String phoneMobil, LocalDate birthday, String mail, String website, String adress) {
+    public Contact(Integer id, String firstname, String lastname, String nickname, String phoneFix, String phoneMobil, LocalDate birthday, String mail, String website, String adress, String city, String country) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -39,6 +39,8 @@ public class Contact {
         this.mail = mail;
         this.website = website;
         this.adress = adress;
+        this.city = city;
+        this.country = country;
     }
 
 
@@ -108,8 +110,14 @@ public class Contact {
         return adress;
     }
 
+    public String getCity() {
+        return city;
+    }
 
-    //SETTERS
+    public String getCountry() {
+        return country;
+    }
+//SETTERS
 
 
     public void setId(Integer id) {
@@ -150,5 +158,13 @@ public class Contact {
 
     public void setAdress(String adress) {
         this.adress = adress;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }
